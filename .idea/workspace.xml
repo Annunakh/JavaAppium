@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36b0db43-1358-4080-b1d8-963e52b69f67" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YyqiS8QrSGkLHsr90foTkufHfg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36b0db43-1358-4080-b1d8-963e52b69f67" name="Default Changelist" comment="" />
+      <created>1583925308584</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583925308584</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="136" y="254" key="Maven.ArtifactSearchDialog" timestamp="1583930249038">
+      <screen x="0" y="23" width="1920" height="1002" />
+    </state>
+    <state x="136" y="254" key="Maven.ArtifactSearchDialog/0.23.1920.1001@0.23.1920.1001" timestamp="1583929591546" />
+    <state x="136" y="254" key="Maven.ArtifactSearchDialog/0.23.1920.1002@0.23.1920.1002" timestamp="1583930249038" />
+    <state x="136" y="253" key="Maven.ArtifactSearchDialog/0.23.1920.997@0.23.1920.997" timestamp="1583929625842" />
+    <state x="101" y="160" key="SettingsEditor" timestamp="1583929553298">
+      <screen x="0" y="23" width="1920" height="1001" />
+    </state>
+    <state x="101" y="160" key="SettingsEditor/0.23.1920.1001@0.23.1920.1001" timestamp="1583929553298" />
+    <state x="491" y="354" key="com.intellij.ide.util.TipDialog" timestamp="1584341964764">
+      <screen x="0" y="23" width="1920" height="1002" />
+    </state>
+    <state x="491" y="354" key="com.intellij.ide.util.TipDialog/0.23.1920.1002@0.23.1920.1002" timestamp="1584341964764" />
+  </component>
+</project>
