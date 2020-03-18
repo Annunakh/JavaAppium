@@ -1,7 +1,7 @@
 package lib.ui;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ abstract public class NavigationUI extends MainPageObject {
         MY_LISTS_LINK,
         DECLINE_SYNC_BUTTON;
 
-    public NavigationUI(AppiumDriver driver) {
+    public NavigationUI(RemoteWebDriver driver) {
         super(driver);
         this.driver = driver;
     }
@@ -19,8 +19,8 @@ abstract public class NavigationUI extends MainPageObject {
     /* UTIL METHODS */
 
     public void pressBackButton() {
-        List<MobileElement> buttons = driver.findElementsByClassName("android.widget.ImageButton");
-        MobileElement backButton = buttons.get(0);
+        List<WebElement> buttons = driver.findElementsByClassName("android.widget.ImageButton");
+        WebElement backButton = buttons.get(0);
         backButton.click();
     }
 

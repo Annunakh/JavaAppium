@@ -1,7 +1,7 @@
 package lib.ui.ios;
 
-import io.appium.java_client.AppiumDriver;
 import lib.ui.SearchPageObject;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class IOSSearchPageObject extends SearchPageObject {
     static {
@@ -19,7 +19,7 @@ public class IOSSearchPageObject extends SearchPageObject {
         PAGE_LIST_ITEM_DESCRIPTION ="xpath://*[@resource-id='org.wikipedia:id/page_list_item_description'][@text='{DESCRIPTION}']";
         PAGE_LIST_ITEM_FULL_NAME ="xpath://XCUIElementTypeCell/XCUIElementTypeLink[contains(@name,'{SUBSTRING}')]";
     }
-    public IOSSearchPageObject(AppiumDriver driver) {
+    public IOSSearchPageObject(RemoteWebDriver driver) {
         super(driver);
     }
 }

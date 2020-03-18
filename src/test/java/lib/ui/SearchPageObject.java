@@ -1,12 +1,9 @@
 package lib.ui;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ abstract public class SearchPageObject extends MainPageObject {
         AMOUNT_OF_ELEMENTS,
         PAGE_LIST_ITEM_DESCRIPTION;
 
-    public SearchPageObject(AppiumDriver driver) {
+    public SearchPageObject(RemoteWebDriver driver) {
         super(driver);
     }
 
@@ -126,12 +123,12 @@ abstract public class SearchPageObject extends MainPageObject {
     }
 
     public void assertThatEveryResultContainsExpectedText(String text_to_search) {
-        List<MobileElement> search_results =
+        List<WebElement> search_results =
                 driver.findElements(By.xpath("//*[@resource-id='org.wikipedia:id/search_results_list']" +
-                        "/android.view.ViewGroup"));
+                            "/android.view.ViewGroup"));
 
-        for (MobileElement element: search_results) {
-            MobileElement text_view = (MobileElement) driver.findElement(By.id("org.wikipedia:id/page_list_item_title"));
+        for (WebElement element : search_results) {
+            WebElement text_view = (WebElement) driver.findElement(By.id("org.wikipedia:id/page_list_item_title"));
             Assert.assertTrue(
                     "Not every result contains the expected text",
                     text_view.getAttribute("text").contains(text_to_search)
