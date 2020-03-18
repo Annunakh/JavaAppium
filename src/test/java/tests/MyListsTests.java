@@ -136,7 +136,6 @@ public class MyListsTests extends CoreTestCase {
 
         String article_to_delete = "Java";
         String article_to_save = "Appius";
-
         MyListPageObject.swipeByArticleToDelete(article_to_delete);
         MyListPageObject.waitForArticleToAppearByTitle(article_to_save);
     }
