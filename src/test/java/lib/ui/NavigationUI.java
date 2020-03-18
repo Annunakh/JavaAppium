@@ -1,5 +1,6 @@
 package lib.ui;
 
+import lib.Platform;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -9,7 +10,8 @@ abstract public class NavigationUI extends MainPageObject {
 
     protected static String
         MY_LISTS_LINK,
-        DECLINE_SYNC_BUTTON;
+        DECLINE_SYNC_BUTTON,
+        OPEN_NAVIGATION;
 
     public NavigationUI(RemoteWebDriver driver) {
         super(driver);
@@ -25,11 +27,17 @@ abstract public class NavigationUI extends MainPageObject {
     }
 
     public void clickMyLists() {
-        this.waitForElementAndClick(
-                MY_LISTS_LINK,
-                "Cannot find navigation button to 'My lists'",
-                5
-        );
+        if (Platform.getInstance().isMW()) {
+            this.tryClickElementWithFewAttempts(MY_LISTS_LINK,
+                    "Cannot find navigation button to My Lists",
+                    5);
+        } else {
+            this.waitForElementAndClick(
+                    MY_LISTS_LINK,
+                    "Cannot find navigation button to 'My lists'",
+                    5
+            );
+        }
     }
 
     public void declineSyncMyLists() {
@@ -38,5 +46,15 @@ abstract public class NavigationUI extends MainPageObject {
                 "Cannot decline sync reading list",
                 5
         );
+    }
+
+    public void openNavigation() {
+        if (Platform.getInstance().isMW()) {
+            this.tryClickElementWithFewAttempts(OPEN_NAVIGATION,
+                    "Cannot open navigation menu",
+                    10);
+        } else {
+            System.out.println("Method does nothing");
+        }
     }
 }

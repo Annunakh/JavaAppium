@@ -8,7 +8,7 @@ public class AndroidSearchPageObject extends SearchPageObject {
         SKIP_BUTTON ="xpath://*[contains(@text, 'SKIP')]";
         SEARCH_INIT_ELEMENT ="xpath://*[contains(@text, 'Search Wikipedia')]";
         SEARCH_INPUT ="id:org.wikipedia:id/search_src_text";
-        SEARCH_RESULT_BY_SUBSTRING_TPL ="xpath://*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='{SUBSTRING}']";
+        SEARCH_RESULT_BY_SUBSTRING_TPL ="xpath://*[@resource-id='org.wikipedia:id/page_list_item_title'][contains(@text,'{SUBSTRING}')]";
         SEARCH_DESCRIPTION_BY_SUBSTRING_TPL ="xpath://*[@resource-id='org.wikipedia:id/page_list_item_description'][@text='{SUBSTRING}']";
         SEARCH_BACK_BUTTON ="xpath:/android.widget.ImageButton[1]";
         SEARCH_RESULTS_LIST ="id:org.wikipedia:id/search_results_list";

@@ -1,5 +1,6 @@
 package lib.ui;
 
+import lib.Platform;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -52,8 +53,13 @@ abstract public class SearchPageObject extends MainPageObject {
     /* UTIL METHODS */
 
     public void skipOnBoarding() {
-        this.waitForElementAndClick(SKIP_BUTTON, "Cannot find skip button", 5);
+        if (Platform.getInstance().isMW()) {
+            System.out.println("Method does nothing");
+        } else {
+            this.waitForElementAndClick(SKIP_BUTTON, "Cannot find skip button", 5);
+        }
     }
+
 
     public void initSearchInput() {
         this.waitForElementAndClick(SEARCH_INIT_ELEMENT, "Cannot find element to init search", 5);

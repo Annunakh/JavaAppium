@@ -1,13 +1,13 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.ArticlePageObject;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import java.time.Duration;
 
@@ -15,6 +15,9 @@ public class ChangeAppConditionTests extends CoreTestCase {
 
     @Test
     public void testChangeScreenOrientationOnSearchResults() {
+        if (Platform.getInstance().isMW()) {
+            return;
+        }
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
@@ -51,13 +54,16 @@ public class ChangeAppConditionTests extends CoreTestCase {
 
     @Test
     public void testCheckSearchArticleInBackground() {
+        if (Platform.getInstance().isMW()) {
+            return;
+        }
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.skipOnBoarding();
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Appium");
         SearchPageObject.waitForSearchResult("Appium");
-        driver.runAppInBackground(Duration.ofSeconds(5));
+        backgroundApp(Duration.ofSeconds(5));
         SearchPageObject.waitForSearchResult("Appium");
     }
 }
