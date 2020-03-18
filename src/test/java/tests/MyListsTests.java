@@ -17,7 +17,7 @@ public class MyListsTests extends CoreTestCase {
         password = "rtv4ergp51";
 
     @Test
-    public void testSaveFirstArticleToMyList() throws InterruptedException {
+    public void testSaveFirstArticleToMyList() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
 
@@ -33,14 +33,11 @@ public class MyListsTests extends CoreTestCase {
         if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else {
-            Thread.sleep(1000);
             ArticlePageObject.addArticlesToMySaved();
-            Thread.sleep(1000);
         }
 
         if (Platform.getInstance().isMW()) {
             Auth.clickAuthButton();
-            Thread.sleep(1000);
             Auth.enterLoginData(login, password);
             Auth.submitForm();
             ArticlePageObject.waitForTitleElement();
@@ -74,7 +71,7 @@ public class MyListsTests extends CoreTestCase {
     }
 
     @Test
-    public void testRemoveOneOfSavedArticlesFromReadingList() throws InterruptedException {
+    public void testRemoveOneOfSavedArticlesFromReadingList() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
@@ -97,13 +94,10 @@ public class MyListsTests extends CoreTestCase {
             ArticlePageObject.pressIOSBackBtn();
             SearchPageObject.clickBackButton();
         } else {
-            Thread.sleep(1000);
             ArticlePageObject.addArticlesToMySaved();
-            Thread.sleep(1000);
         }
         if (Platform.getInstance().isMW()) {
             Auth.clickAuthButton();
-            Thread.sleep(1000);
             Auth.enterLoginData(login, password);
             Auth.submitForm();
             ArticlePageObject.waitForTitleElement();
@@ -112,7 +106,6 @@ public class MyListsTests extends CoreTestCase {
                     article_title,
                     ArticlePageObject.getArticleTitle());
 
-            Thread.sleep(1000);
             ArticlePageObject.addArticlesToMySaved();
         }
 
@@ -132,13 +125,9 @@ public class MyListsTests extends CoreTestCase {
             NavigationUI.clickMyLists();
             NavigationUI.declineSyncMyLists();
         } else {
-            Thread.sleep(1000);
             ArticlePageObject.addArticlesToMySaved();
-            Thread.sleep(1000);
             NavigationUI.openNavigation();
-            Thread.sleep(1000);
             NavigationUI.clickMyLists();
-            Thread.sleep(1000);
         }
 
         if (Platform.getInstance().isAndroid()) {
