@@ -40,6 +40,7 @@ public class MyListsTests extends CoreTestCase {
 
         if (Platform.getInstance().isMW()) {
             Auth.clickAuthButton();
+            Thread.sleep(1000);
             Auth.enterLoginData(login, password);
             Auth.submitForm();
             ArticlePageObject.waitForTitleElement();
@@ -73,16 +74,19 @@ public class MyListsTests extends CoreTestCase {
     }
 
     @Test
-    public void testRemoveOneOfSavedArticlesFromReadingList() {
+    public void testRemoveOneOfSavedArticlesFromReadingList() throws InterruptedException {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         MyListsPageObject MyListPageObject = MyListsPageObjectFactory.get(driver);
+        AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
 
         SearchPageObject.skipOnBoarding();
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Appium");
-        SearchPageObject.clickByArticleWithSubstring("Appium");
+        SearchPageObject.clickByArticleWithSubstring("");
+
+        final String article_title = ArticlePageObject.getArticleTitle();
 
         if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addArticleToMyList(name_of_folder);
@@ -93,10 +97,24 @@ public class MyListsTests extends CoreTestCase {
             ArticlePageObject.pressIOSBackBtn();
             SearchPageObject.clickBackButton();
         } else {
+            Thread.sleep(1000);
+            ArticlePageObject.addArticlesToMySaved();
+            Thread.sleep(1000);
+        }
+        if (Platform.getInstance().isMW()) {
+            Auth.clickAuthButton();
+            Thread.sleep(1000);
+            Auth.enterLoginData(login, password);
+            Auth.submitForm();
+            ArticlePageObject.waitForTitleElement();
+
+            assertEquals("We are not on the same page after login",
+                    article_title,
+                    ArticlePageObject.getArticleTitle());
+
+            Thread.sleep(1000);
             ArticlePageObject.addArticlesToMySaved();
         }
-
-        NavigationUI.openNavigation();
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
@@ -107,20 +125,28 @@ public class MyListsTests extends CoreTestCase {
             NavigationUI.pressBackButton();
             NavigationUI.declineSyncMyLists();
             NavigationUI.clickMyLists();
-        } else {
+        } else if (Platform.getInstance().isIOS()) {
             ArticlePageObject.addArticlesToMySaved();
             ArticlePageObject.pressIOSBackBtn();
             SearchPageObject.clickBackButton();
             NavigationUI.clickMyLists();
             NavigationUI.declineSyncMyLists();
+        } else {
+            Thread.sleep(1000);
+            ArticlePageObject.addArticlesToMySaved();
+            Thread.sleep(1000);
+            NavigationUI.openNavigation();
+            Thread.sleep(1000);
+            NavigationUI.clickMyLists();
+            Thread.sleep(1000);
         }
 
         if (Platform.getInstance().isAndroid()) {
             MyListPageObject.openFolderByName(name_of_folder);
         }
 
-        String article_to_delete = "Appium";
-        String article_to_save = "Java";
+        String article_to_delete = "Java";
+        String article_to_save = "Appius";
 
         MyListPageObject.swipeByArticleToDelete(article_to_delete);
         MyListPageObject.waitForArticleToAppearByTitle(article_to_save);

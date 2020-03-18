@@ -133,10 +133,11 @@ abstract public class ArticlePageObject extends MainPageObject {
            this.waitForElementAndClick(OPTIONS_REMOVE_FROM_MY_LIST_BUTTON,
                    "Cannot click button to remove an article from saved",
                    5);
+        } else {
+            this.waitForElementPresent(OPTIONS_ADD_ARTICLE_BUTTON,
+                    "Cannot find button to add an article to saved after removing it from this list before",
+                    5);
         }
-        this.waitForElementPresent(OPTIONS_ADD_ARTICLE_BUTTON,
-                "Cannot find button to add an article to saved after removing it from this list before",
-                5);
     }
 
     public void pressIOSBackBtn() {
