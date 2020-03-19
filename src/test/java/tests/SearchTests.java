@@ -74,7 +74,7 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject.skipOnBoarding();
         SearchPageObject.initSearchInput();
 
-        String text_to_search = "Linkin Park discography";
+        String text_to_search = "Linkin Park";
         SearchPageObject.typeSearchLine(text_to_search);
 
         int amount_of_search_results = SearchPageObject.getAmountOfFoundArticles();
@@ -84,21 +84,19 @@ public class SearchTests extends CoreTestCase {
         );
 
         Map<String, String> results_to_check = new HashMap<>();
-        results_to_check.put("Linkin Park discography", "Band discography");
+        results_to_check.put("Linkin Park discography", "and discography");
         results_to_check.put("Linkin Park", "American alternative rock band");
-        results_to_check.put("Hybrid Theory", "2000 studio album by Linkin Park");
+        results_to_check.put("Living Things (Linkin Park album)", "2012 studio album by Linkin Park");
 
         for (Map.Entry<String, String> entry : results_to_check.entrySet()) {
             String title = entry.getKey();
             String description = entry.getValue();
 
-            if (Platform.getInstance().isAndroid()) {
+            if ((Platform.getInstance().isAndroid()) || (Platform.getInstance().isMW())) {
                 SearchPageObject.waitForElementByTitleAndDescription(title, description);
             } else {
-                System.out.println(driver.getPageSource());
                 SearchPageObject.waitForElementByFullName(title, description);
             }
-
         }
     }
 }
